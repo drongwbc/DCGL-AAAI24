@@ -142,7 +142,7 @@ def FL_Loss(clusters, h1, centers, label, h2=[], temperature=0.5):
         torch.exp(torch.mm(h1, centers.T) / temperature), indicator)
 
     loss = - torch.log(torch.diagonal(sim_positive) /
-                       torch.diagonal(sim_positive) + torch.sum(sim_negative, dim=1))
+                       (torch.diagonal(sim_positive) + torch.sum(sim_negative, dim=1)))
     return loss.mean()
 
 
