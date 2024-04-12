@@ -77,7 +77,7 @@ def train(args):
 
         with torch.no_grad():
             if (epoch + 1) % args.update_interval == 0:
-                if nei > args.upperNei:
+                if nei >= args.upperNei:
                     break
                 else:
                     nei += args.neighbor
