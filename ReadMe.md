@@ -12,7 +12,12 @@ The code for "Deep Contrastive Graph Learning with Clustering-Oriented Guidance"
 Python run.py
 ```
 
-See the data folder to run custom data.
+The proposed DCGL is implemented with Python 3.8.1 on Pytorch framework.
+
+torch==1.13.1
+numpy==1.23.5
+scikit_learn==1.2.0
+scipy==1.9.3
 
 ## Citation
 
