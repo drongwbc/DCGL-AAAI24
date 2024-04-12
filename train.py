@@ -24,6 +24,7 @@ def train(args):
     setup_seed(args.seed)
     warnings.filterwarnings('ignore')
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print(device)
     # Data process
     [X, Y] = utils.load_data(args.name)
     args.samples = X.shape[0]
@@ -76,12 +77,6 @@ def train(args):
         optimizer.step()
 
         with torch.no_grad():
-            if (epoch + 1) % args.update_interval == 0:
-                if nei >= args.upperNei:
-                    break
-                else:
-                    nei += args.neighbor
-
             S_L, h1, _, _, _, _, _ = curModel(X,
                                               A,
                                               args.n_clusters,
@@ -99,6 +94,13 @@ def train(args):
             retScore[1] = max(retScore[1], nmi)
             retScore[2] = max(retScore[2], ari)
             retScore[3] = max(retScore[3], f1)
+
+            if (epoch + 1) % args.update_interval == 0:
+                if nei >= args.upperNei:
+                    break
+                else:
+                    nei += args.neighbor
+            
     end_time = time.time()
     running_time = end_time - start_time
 
