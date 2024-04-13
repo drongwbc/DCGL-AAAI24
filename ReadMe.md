@@ -12,7 +12,8 @@ The code for "Deep Contrastive Graph Learning with Clustering-Oriented Guidance"
 Python main.py
 ```
 
-The proposed DCGL is implemented with Python 3.8.1 on Pytorch framework.
+The proposed DCGL is implemented with Python 3.8.1 on Pytorch framework.   
+You can set "KMrep=10 in the spectral_clustering function" to approximately reproduce the original results.  
 
 torch==1.13.1  
 numpy==1.23.5  
